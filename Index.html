@@ -1,15 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <script src="https://cdn.jsdelivr.net/npm/p5@1.11.5/lib/p5.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.3/addons/p5.sound.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <meta charset="utf-8" />
+function setup() {
+  createCanvas(400, 400);
+}
 
-  </head>
-  <body>
-    <main>
-    </main>
-    <script src="sketch.js"></script>
-  </body>
-</html>
+let xJogador1 = 0;
+let xJogador2 = 0;
+
+function draw() {
+  if (focused == true) {
+    background("#D2EBB5");
+  } else {
+    background("rgb(238,178,178)");
+  }
+  textSize(40);
+  text("😎", xJogador1, 100);
+  text("❤️", xJogador2, 300);
+  rect(350, 0, 10, 400);
+
+  if (xJogador1 > 350) {
+    text("Jogador 1 venceu!", 50, 200);
+    noLoop();
+  }
+  if (xJogador2 > 350) {
+    text("Jogador 2 venceu!", 50, 200);
+    noLoop();
+  }
+}
+
+function keyReleased() {
+  if (key === "a") {
+    xJogador1 += random(20);
+  }
+  if (key === "s") {
+    xJogador2 += random(20);
+  }
+}
